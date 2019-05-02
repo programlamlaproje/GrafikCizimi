@@ -155,6 +155,35 @@ void grafikCiz(RenderWindow &pencere){
 			x_koordinati=0,	//Denklemde kullanilan noktanin x eksenindeki degerini belirler.
 			y_koordinati=0; //Denklemde kullanilan noktanin y eksenindeki degerini belirler.
 	t=30+fark_x/yakinlastirma_katsayisi;
+
+	//Denkelem grafigin egrisi asagidaki for dongusunde cizilir.
+	while(t>=-30+fark_x/yakinlastirma_katsayisi)//Grafigi olusturan noktalarin x degerinin verildigi dongu
+	{
+		x_koordinati=t;		//Noktanin x degeri belirlenir./////////////////////////////////////////////////////////////////////
+		y_koordinati=t*t*t;		//Noktanin y degeri belirlenir./////////////////////////////////////////////////////////////////
+		if(eski_x_koordinati!=0 &&	eski_y_koordinati!=0)
+		{
+			Vertex cizikler[] = //Grafik burada olusturulan cizgiler ile olusturulur.
+			{
+					Vertex(Vector2f(eski_x_koordinati,eski_y_koordinati)),//Denenen iki parametre degerinden ilki
+					Vertex(Vector2f(PENCERE_ENI/2+yakinlastirma_katsayisi*x_koordinati-fark_x,PENCERE_YUKSEKLIGI/2-yakinlastirma_katsayisi*y_koordinati-fark_y))//Denenen iki parametre degerinden ikincileri
+			};
+			pencere.draw(cizikler, 2, Lines); //Grafik ekranda gosterilir.
+		}
+		eski_x_koordinati=PENCERE_ENI/2+yakinlastirma_katsayisi*x_koordinati-fark_x; //Denenen iki parametre degerinin ilk x sonucunu hafizada tutar
+		eski_y_koordinati=PENCERE_YUKSEKLIGI/2-yakinlastirma_katsayisi*y_koordinati-fark_y; //Denenen iki parametre degerinin ilk y sonucunu hafizada tutar
+		t-=grafik_basitligi; //Parametrenin degeri azaltilir.
+	} // Grafik ciziminin bitimi
+}
+
+void grafikCiz2(RenderWindow &pencere){
+	int eski_x_koordinati=0, eski_y_koordinati=0;
+	float grafik_basitligi=0.007,	//Grafigin goruntusunu iyilestirir. Dusuk degerde program yavas calisir. ideal deger = 0.005
+			t,			//Denklem parametresi
+			x_koordinati=0,	//Denklemde kullanilan noktanin x eksenindeki degerini belirler.
+			y_koordinati=0; //Denklemde kullanilan noktanin y eksenindeki degerini belirler.
+	t=30+fark_x/yakinlastirma_katsayisi;
+
 	//Denkelem grafigin egrisi asagidaki for dongusunde cizilir.
 	while(t>=-30+fark_x/yakinlastirma_katsayisi)//Grafigi olusturan noktalarin x degerinin verildigi dongu
 	{

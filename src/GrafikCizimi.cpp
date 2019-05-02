@@ -5,24 +5,10 @@ using namespace sf;
 
 int main() {
 	ContextSettings settings;settings.antialiasingLevel=8; //Grafigin pruzlerini siler
-	RenderWindow pencere(VideoMode(PENCERE_ENI, PENCERE_YUKSEKLIGI), "Grafik Cizimi",Style::Default,settings); //Pencereyi olusturur ve tanimlar.
+	RenderWindow pencere(VideoMode(PENCERE_ENI, PENCERE_YUKSEKLIGI), "Grafik Cizimi",Style::Close,settings); //Pencereyi olusturur ve tanimlar.
 	Event olayNesnesi; //Kullanicin komutlarini kontrol eden obje
 
-	Text //=================================================================================================METIN
-	fx,	//Menudeki "f(x)=" yazisini olusturur.
-	denklem_metni //Kullanicinin girdigi denklemi ekrana yazar.
-	;
-
-	String kullanici_denklemi = ""; //Kullanicin girdigi metni hafizaya alir.
-
-	fx.setString("f(x)=");
-	fx.setFont(font);
-	fx.setPosition(10,10);
-	fx.setCharacterSize(30);
-	denklem_metni.setFont(font);
-	denklem_metni.setPosition(80,10);
-	denklem_metni.setCharacterSize(30);
-
+	denklemMenuOlustur();
 	gorselleriOlustur(); //Kalem silgi ve cop kutusu gorsellerini ekler.
 	menuOlustur(); //Ust menuyu olusturur ve duzenler.
 	eksenSayilariniOlustur(); // x ve y eksenlerindeki sayilar icin sayi dizisi olusturur.
@@ -35,7 +21,7 @@ int main() {
 
 			klavye_etkinlikleri(olayNesnesi, pencere); //Klavyenin hareketlerini kontrol eder.
 			fare_etkinlikleri(olayNesnesi);	//Farenin hareketlerini kontrol eder.
-			denklem_metni.setString(denklem_oku(olayNesnesi, kullanici_denklemi)); //Kullanicidan denklem alamayan fonksiyon.
+			denklem_oku(olayNesnesi); //Kullanicidan denklem alamayan fonksiyon.
 
 		}//Kullanici komutlari dongusu bitimi
 
@@ -50,11 +36,12 @@ int main() {
 		eksenleriYerlestir(pencere); // x ve y eksenlerinin konum ve kalinlik bilgilerini duzenler ve ekranda gosterir.
 		eksenSayilariniYerlestir(pencere); //Eksenlerdeki sayilarin buyuklerini ve konumlarini duzenler. Ekranda gosterir.
 		grafikCiz(pencere); //Grafik egrisini olusturur ve ekranda gosterir.
+		grafikCiz2(pencere);
 		kalemRengi(); //Menuden renk degistirilmesi ile kalem rengini degistirir.
 		kalemSilgiKullan(pencere); // Kalem ve silgi araclarini olusturur.
 		imleciDegistir(pencere, imlecIcon); //Imleci kalem veya silgi seklinde gosterir.
 		menuyuYerlestir(pencere); //Olusturulan menuyu gosterir.
-		pencere.draw(fx);pencere.draw(denklem_metni);
+		denklemiMenuyeYerlestir(pencere);
 		renkKutucuklari(pencere); //Kalem rengi seceneklerini olusturur ve menuye ekler.
 
 		pencere.display(); //Menuye eklenen grafiklerin gosterilmesini saglar.

@@ -6,8 +6,33 @@
 #include <SFML/Graphics.hpp>
 
 int x;
-bool sil_tusu_kontrol=true;
-float denklem;
+bool sil_tusu_kontrol=true,
+		islem_kontrol=false;
+
+sf::Text //=================================================================================================METIN
+fx,	//Menudeki "f(x)=" yazisini olusturur.
+denklem_metni //Kullanicinin girdigi denklemi ekrana yazar.
+;
+sf::String kullanici_denklemi;//Kullanicin girdigi metni hafizaya alir.
+sf::Font font2;
+
+double sayiya_cevir(std::string str){
+	double denklem = stoi(str);
+	return denklem;
+}
+
+double isleme_cevir(sf::String kullanici_denklemi){
+	std::string str = kullanici_denklemi;
+	double denklem=0;
+	for(int i=str.size()-1; i>=0; i++){
+
+
+	}
+
+	std::cout << "Denklem: " << denklem << "\n" ;
+
+	return denklem;
+}
 
 void silgi(sf::String &kullanici_denklemi){
 	std::string str = kullanici_denklemi;
@@ -17,27 +42,7 @@ void silgi(sf::String &kullanici_denklemi){
 	kullanici_denklemi=str;
 }
 
-float isleme_cevir(sf::String kullanici_denklemi){
-	std::string str = kullanici_denklemi;
-	int onluk_sayi=1;
-	for(int i=str.size()-1; i>=0; i--)
-	{
-		if(str[i]-'0'>=0 || str[i]-'0'<=9){
-			denklem += onluk_sayi*str[i];
-			onluk_sayi*=10;
-		}
-		if(str[i]-'0'==72){
-			denklem += x;
-		}
-	}
-
-	std::cout << "Denklem: " << denklem ;
-
-	return denklem;
-}
-
-
-std::string denklem_oku(sf::Event& olayNesnesi, sf::String& kullanici_denklemi){
+void denklem_oku(sf::Event& olayNesnesi){
 
 	if(olayNesnesi.type==sf::Event::TextEntered && sil_tusu_kontrol)
 	{
@@ -51,8 +56,7 @@ std::string denklem_oku(sf::Event& olayNesnesi, sf::String& kullanici_denklemi){
 				|| olayNesnesi.text.unicode == 111
 				|| olayNesnesi.text.unicode == 115
 				|| olayNesnesi.text.unicode == 116
-				|| olayNesnesi.text.unicode == 120
-				|| olayNesnesi.text.unicode == 121)
+				|| olayNesnesi.text.unicode == 120)
 			kullanici_denklemi += olayNesnesi.text.unicode;
 	}
 	sil_tusu_kontrol=true;
@@ -62,8 +66,27 @@ std::string denklem_oku(sf::Event& olayNesnesi, sf::String& kullanici_denklemi){
 			silgi(kullanici_denklemi);
 			sil_tusu_kontrol=false;
 		}
+		if(olayNesnesi.key.code==sf::Keyboard::Enter){
+			isleme_cevir(kullanici_denklemi);
+		}
 	}
-	return kullanici_denklemi;
+
+	denklem_metni.setString(kullanici_denklemi);
+}
+
+void denklemMenuOlustur(){
+	if(!font2.loadFromFile("calibril.ttf")){/*Yazinin olusabilmesi icin bu kosul gerekli*/};
+	fx.setString("f(x)=");
+	fx.setFont(font2);
+	fx.setPosition(10,10);
+	fx.setCharacterSize(30);
+	denklem_metni.setFont(font2);
+	denklem_metni.setPosition(80,10);
+	denklem_metni.setCharacterSize(30);
+}
+
+void denklemiMenuyeYerlestir(sf::RenderWindow &pencere){
+	pencere.draw(fx);pencere.draw(denklem_metni);
 }
 
 
