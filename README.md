@@ -8,6 +8,8 @@ https://www.sfml-dev.org/download/sfml/2.5.1/
 
 Kütüphane indirildikten sonra projeye eklenmesi gerekiyor;
 
+Eclipse icin kütüphaneyi projeye ekleme,
+
 Projeyi import ettikten sonra proje gezgini üzerinde projeye sağ tıklayın ve Properties seçin.
 
 İnclude klasörünü ekleyin.
@@ -21,5 +23,9 @@ sfml-graphics
 sfml-window 
 sfml-system 
 Değişiklikleri kaydetmek için Uygula ve Tamam'ı tıklayın .
+
+Kütüphaneyi projeye eklemeyi daha ayrıntılı görmek için:
+
+https://github.com/Peplow/SFML-and-Eclipse
 
 2019 Bahar Dönemi Programlama Projesi
