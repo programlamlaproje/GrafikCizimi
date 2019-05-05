@@ -31,12 +31,11 @@ int main() {
 		}else{
 			imlecIcon.setTexture(&silgiSimgesi); //Imleci silgi formunda gosterir.
 		}
-
 		ekraniKaydir(); //Fare sag tusu ile ekranin kaydirilmasini saglar.
 		eksenleriYerlestir(pencere); // x ve y eksenlerinin konum ve kalinlik bilgilerini duzenler ve ekranda gosterir.
 		eksenSayilariniYerlestir(pencere); //Eksenlerdeki sayilarin buyuklerini ve konumlarini duzenler. Ekranda gosterir.
 		grafikCiz(pencere); //Grafik egrisini olusturur ve ekranda gosterir.
-		grafikCiz2(pencere);
+//		grafikCiz2(pencere);
 		kalemRengi(); //Menuden renk degistirilmesi ile kalem rengini degistirir.
 		kalemSilgiKullan(pencere); // Kalem ve silgi araclarini olusturur.
 		imleciDegistir(pencere, imlecIcon); //Imleci kalem veya silgi seklinde gosterir.

@@ -43,6 +43,7 @@ bool sol_kontrol=false, //Farenin sag tusuna basiliyorsa true degerini alir.
 		;
 
 std::vector<CircleShape>kalem; //Kalem kullanimi icin dizi olusturur.
+std::vector<int>yakinlik; //Kalem kullanimi icin dizi olusturur.
 
 Text
 y_pozitif_sayilar[y_eleman_sayisi],//Eksenleri numaranlandiran sayilari olusturur.
@@ -97,7 +98,10 @@ void fare_etkinlikleri(Event& olayNesnesi)//Fare hareketlerini denetleyen metot
 				&& cop_bitis>=mouse_x
 				&& olayNesnesi.mouseButton.button==sf::Mouse::Left
 				&& mouse_y<50)
+		{
 			kalem.clear();	//Kalem ile yazilan her seyi siler.
+			yakinlik.clear();
+		}
 		if(PENCERE_ENI-2.2*MENU_SIMGE_BOYUTU<mouse_x
 				&& olayNesnesi.mouseButton.button==sf::Mouse::Left
 				&& mouse_y<50){R=0;G=0;B=255;}
@@ -140,7 +144,11 @@ void klavye_etkinlikleri(Event& olayNesnesi, RenderWindow& pencere)//Klavye etki
 		if(olayNesnesi.key.code==Keyboard::Down)fark_y+=50;
 		if(olayNesnesi.key.code==Keyboard::Left)fark_x-=50;
 		if(olayNesnesi.key.code==Keyboard::Right)fark_x+=50;
-		if(olayNesnesi.key.code==Keyboard::Delete)kalem.clear();
+		if(olayNesnesi.key.code==Keyboard::Delete)
+		{
+			kalem.clear();
+			yakinlik.clear();
+		}
 		if(olayNesnesi.key.code==Keyboard::Y && yakinlastirma_katsayisi <250 )yakinlastirma_katsayisi+=10;
 		if(olayNesnesi.key.code==Keyboard::U && yakinlastirma_katsayisi>29)yakinlastirma_katsayisi-=10;
 		if(olayNesnesi.key.code==Keyboard::Space){fark_x=0;fark_y=0;yakinlastirma_katsayisi=50;eksen_kalinligi=2;}
@@ -151,16 +159,16 @@ void klavye_etkinlikleri(Event& olayNesnesi, RenderWindow& pencere)//Klavye etki
 void grafikCiz(RenderWindow &pencere){
 	int eski_x_koordinati=0, eski_y_koordinati=0;
 	float grafik_basitligi=0.007,	//Grafigin goruntusunu iyilestirir. Dusuk degerde program yavas calisir. ideal deger = 0.005
-			t,			//Denklem parametresi
+			x,			//Denklem parametresi
 			x_koordinati=0,	//Denklemde kullanilan noktanin x eksenindeki degerini belirler.
 			y_koordinati=0; //Denklemde kullanilan noktanin y eksenindeki degerini belirler.
-	t=30+fark_x/yakinlastirma_katsayisi;
+	x=30+fark_x/yakinlastirma_katsayisi;
 
 	//Denkelem grafigin egrisi asagidaki for dongusunde cizilir.
-	while(t>=-30+fark_x/yakinlastirma_katsayisi)//Grafigi olusturan noktalarin x degerinin verildigi dongu
+	while(x>=-30+fark_x/yakinlastirma_katsayisi)//Grafigi olusturan noktalarin x degerinin verildigi dongu
 	{
-		x_koordinati=t;		//Noktanin x degeri belirlenir./////////////////////////////////////////////////////////////////////
-		y_koordinati=t*t*t;		//Noktanin y degeri belirlenir./////////////////////////////////////////////////////////////////
+		x_koordinati=x;		//Noktanin x degeri belirlenir./////////////////////////////////////////////////////////////////////
+		y_koordinati=x*x*x;		//Noktanin y degeri belirlenir./////////////////////////////////////////////////////////////////
 		if(eski_x_koordinati!=0 &&	eski_y_koordinati!=0)
 		{
 			Vertex cizikler[] = //Grafik burada olusturulan cizgiler ile olusturulur.
@@ -172,23 +180,23 @@ void grafikCiz(RenderWindow &pencere){
 		}
 		eski_x_koordinati=PENCERE_ENI/2+yakinlastirma_katsayisi*x_koordinati-fark_x; //Denenen iki parametre degerinin ilk x sonucunu hafizada tutar
 		eski_y_koordinati=PENCERE_YUKSEKLIGI/2-yakinlastirma_katsayisi*y_koordinati-fark_y; //Denenen iki parametre degerinin ilk y sonucunu hafizada tutar
-		t-=grafik_basitligi; //Parametrenin degeri azaltilir.
+		x-=grafik_basitligi; //Parametrenin degeri azaltilir.
 	} // Grafik ciziminin bitimi
 }
 
 void grafikCiz2(RenderWindow &pencere){
 	int eski_x_koordinati=0, eski_y_koordinati=0;
 	float grafik_basitligi=0.007,	//Grafigin goruntusunu iyilestirir. Dusuk degerde program yavas calisir. ideal deger = 0.005
-			t,			//Denklem parametresi
+			x,			//Denklem parametresi
 			x_koordinati=0,	//Denklemde kullanilan noktanin x eksenindeki degerini belirler.
 			y_koordinati=0; //Denklemde kullanilan noktanin y eksenindeki degerini belirler.
-	t=30+fark_x/yakinlastirma_katsayisi;
+	x=30+fark_x/yakinlastirma_katsayisi;
 
 	//Denkelem grafigin egrisi asagidaki for dongusunde cizilir.
-	while(t>=-30+fark_x/yakinlastirma_katsayisi)//Grafigi olusturan noktalarin x degerinin verildigi dongu
+	while(x>=-30+fark_x/yakinlastirma_katsayisi)//Grafigi olusturan noktalarin x degerinin verildigi dongu
 	{
-		x_koordinati=t;		//Noktanin x degeri belirlenir./////////////////////////////////////////////////////////////////////
-		y_koordinati=t*t;		//Noktanin y degeri belirlenir./////////////////////////////////////////////////////////////////
+		x_koordinati=x*x+5;		//Noktanin x degeri belirlenir./////////////////////////////////////////////////////////////////////
+		y_koordinati=x;		//Noktanin y degeri belirlenir./////////////////////////////////////////////////////////////////
 		if(eski_x_koordinati!=0 &&	eski_y_koordinati!=0)
 		{
 			Vertex cizikler[] = //Grafik burada olusturulan cizgiler ile olusturulur.
@@ -200,7 +208,7 @@ void grafikCiz2(RenderWindow &pencere){
 		}
 		eski_x_koordinati=PENCERE_ENI/2+yakinlastirma_katsayisi*x_koordinati-fark_x; //Denenen iki parametre degerinin ilk x sonucunu hafizada tutar
 		eski_y_koordinati=PENCERE_YUKSEKLIGI/2-yakinlastirma_katsayisi*y_koordinati-fark_y; //Denenen iki parametre degerinin ilk y sonucunu hafizada tutar
-		t-=grafik_basitligi; //Parametrenin degeri azaltilir.
+		x-=grafik_basitligi; //Parametrenin degeri azaltilir.
 	} // Grafik ciziminin bitimi
 }
 
@@ -357,25 +365,23 @@ void kalemSilgiKullan(RenderWindow &pencere){
 
 	if(sol_kontrol && menu_degisken==1 )//Kalem ile sekil cizme burada gerceklesir.
 	{
-		if(mouse_y > 50) //Kullanici menu secimi yaparken kalem sekil cizmez.
+		if(mouse_y > 50){ //Kullanici menu secimi yaparken kalem sekil cizmez.
 			sekil.setPosition(mouse_x+fark_x,mouse_y+fark_y);//Cizilecek konumu belirler.
-		kalem.push_back(sekil);//Cizimi hafizaya alir.
+			kalem.push_back(sekil);//Cizimi hafizaya alir.
+			yakinlik.push_back(yakinlastirma_katsayisi);
+		}
 	}
-	int silginin_altindaki_noktalar =0; //Silgi kullanilirken silginin hangi noktalari silecegi bu int ile belirlenir.
+	int silginin_altindaki_noktalar =0, //Silgi kullanilirken silginin hangi noktalari silecegi bu int ile belirlenir.
+			sayac=0
+			;
 	for(CircleShape siradaki : kalem)//Cizilen sekli ekranda tutar.
 	{
-		if(sol_kontrol)
-		{
-			x_koordinati_fark=(PENCERE_ENI/2-siradaki.getPosition().x)*yakinlastirma_katsayisi/50;
-			y_koordinati_fark=(PENCERE_YUKSEKLIGI/2-siradaki.getPosition().y)*yakinlastirma_katsayisi/50;
-		}
-		else
-		{
-			x_koordinati_fark=(PENCERE_ENI/2-siradaki.getPosition().x)*yakinlastirma_katsayisi/50;
-			y_koordinati_fark=(PENCERE_YUKSEKLIGI/2-siradaki.getPosition().y)*yakinlastirma_katsayisi/50;
-		}
+		x_koordinati_fark=(PENCERE_ENI/2-siradaki.getPosition().x)*yakinlastirma_katsayisi;
+		y_koordinati_fark=(PENCERE_YUKSEKLIGI/2-siradaki.getPosition().y)*yakinlastirma_katsayisi;
+
 		siradaki.setRadius(kalem_kalinligi+(float(yakinlastirma_katsayisi)/60));//Cizilen seklin kalinligini belirler.
-		siradaki.setPosition(PENCERE_ENI/2-x_koordinati_fark-fark_x, PENCERE_YUKSEKLIGI/2-y_koordinati_fark-fark_y);
+		siradaki.setPosition(PENCERE_ENI/2-x_koordinati_fark/yakinlik[sayac]-fark_x, PENCERE_YUKSEKLIGI/2-y_koordinati_fark/yakinlik[sayac]-fark_y);
+		sayac++;
 		pencere.draw(siradaki);
 		if(mouse_x-7<=siradaki.getPosition().x 	//Silgi kosulu
 				&& siradaki.getPosition().x<=mouse_x+10
