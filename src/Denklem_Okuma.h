@@ -16,6 +16,13 @@ denklem_metni //Kullanicinin girdigi denklemi ekrana yazar.
 sf::String kullanici_denklemi;//Kullanicin girdigi metni hafizaya alir.
 sf::Font font2;
 
+void denklem(std::string str){
+	kullanici_denklemi = str;
+}
+void denklem(std::string str1, std::string str2){
+	kullanici_denklemi = str1 + "  g(x)= " + str2;
+}
+
 double sayiya_cevir(std::string str){
 	double denklem = stoi(str);
 	return denklem;
@@ -65,9 +72,6 @@ void denklem_oku(sf::Event& olayNesnesi){
 		if(olayNesnesi.key.code==sf::Keyboard::BackSpace){
 			silgi(kullanici_denklemi);
 			sil_tusu_kontrol=false;
-		}
-		if(olayNesnesi.key.code==sf::Keyboard::Enter){
-			isleme_cevir(kullanici_denklemi);
 		}
 	}
 

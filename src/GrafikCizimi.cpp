@@ -13,6 +13,8 @@ int main() {
 	menuOlustur(); //Ust menuyu olusturur ve duzenler.
 	eksenSayilariniOlustur(); // x ve y eksenlerindeki sayilar icin sayi dizisi olusturur.
 
+	denklem("x^2");
+	kaydiAc();
 	while(pencere.isOpen()){	//Pencerenin acilmasini ve ekran grafiklerinin olusmasini saglayan dongu
 
 		pencere.clear(); //Dongu basa dondugunde ekrandaki grafikleri temizler.
@@ -31,12 +33,11 @@ int main() {
 		}else{
 			imlecIcon.setTexture(&silgiSimgesi); //Imleci silgi formunda gosterir.
 		}
-
 		ekraniKaydir(); //Fare sag tusu ile ekranin kaydirilmasini saglar.
 		eksenleriYerlestir(pencere); // x ve y eksenlerinin konum ve kalinlik bilgilerini duzenler ve ekranda gosterir.
 		eksenSayilariniYerlestir(pencere); //Eksenlerdeki sayilarin buyuklerini ve konumlarini duzenler. Ekranda gosterir.
 		grafikCiz(pencere); //Grafik egrisini olusturur ve ekranda gosterir.
-		grafikCiz2(pencere);
+		//		grafikCiz2(pencere);
 		kalemRengi(); //Menuden renk degistirilmesi ile kalem rengini degistirir.
 		kalemSilgiKullan(pencere); // Kalem ve silgi araclarini olusturur.
 		imleciDegistir(pencere, imlecIcon); //Imleci kalem veya silgi seklinde gosterir.
@@ -49,7 +50,7 @@ int main() {
 	return 0;
 }
 
-//En sevdigim grafik y=(1/t*t)+(t*t/sqrt(cos(t)+t))
+//En sevdigim grafik y=(1/x*x)+(x*x/sqrt(cos(x)+x))
 /*
  * log(sqrt(x*x+1))-sin(pow(x*x+1,cos(x)))
  *
@@ -58,16 +59,5 @@ int main() {
 
 
 				x_koordinati=sin(t)*cos(t)*log(abs(t));		//Noktanin x degeri belirlenir./////////////////////////////////////////////////////////////////////
-			y_koordinati=sqrt(abs(t))*cos(t);		//Noktanin y degeri belirlenir./////////////////////////////////////////////////////////////////
- */
-
-/*
- *
- * Vertex lines[] =
-		{
-				Vertex(Vector2f(mouse_x+10,mouse_y-10)),
-				Vertex(Vector2f(mouse_x,mouse_y),Color::Green)
-		};
-		pencere.draw(lines, 2, Lines);
- */
-
+			y_koordinati=sqrt(abs(t))*cos(t);		//Noktanin y degeri belirlenir.//////////////////////////////////////////////////////////////
+ *////
