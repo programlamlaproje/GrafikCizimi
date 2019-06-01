@@ -3,6 +3,7 @@
 Denklem grafiğini çizer. 
 Denklemleri görsele dökebilir ve grafik üzerinde kalem ile işlemler yabalirsiniz.
 
+
 # Kullanabilmek İçin
 
 SFML kütüphanesi kullanmanız lazım. Kütüphaneyi indirirken derleyiciniz ile uyumlu olduğunu kontrol ediniz.
@@ -33,6 +34,9 @@ Programı çalıştırabilirsiniz.
 
 Kütüphaneyi projeye eklemeyi daha ayrıntılı görmek için:
 https://github.com/Peplow/SFML-and-Eclipse
+
+
+
 
 Visual Studio icin kütüphaneyi projeye ekleme,
 
@@ -68,17 +72,34 @@ Programı çalıştırabilirsiniz.
 Windows versiyonudur.
 
 ![Acilis ekrani](https://github.com/kynemre/Cpp/blob/master/Acilis.png?raw=true)
+
 Bilgisayardan ekran boyutlariniz alır ve küçülterek pencereyi açar.
+
 Denklem girebilmek için ve fonksiyonları seçebilmek için üst menü vardır.
-Hangi fonksiyonun denklemi girilecekse belirtilir.(f(x), f(y), g(x), g(y))
+
+Hangi fonksiyonun denklemi girilecekse belirtilir(f(x), f(y), g(x), g(y)).
+
 Denklem yazilir ve enter tuşuna basılır. Program denklemi işlemeye çalışır fakat bu konuda fazla başarılı değildir.
+
+
 ![Koda denklem girme](https://github.com/kynemre/Cpp/blob/master/koda_denklem_gir.png?raw=true)
-Karmaşık bir denklem girmek için yorum olan kod parçasını yorumdan çıkartıp x ve y koordinatlarına denklemleri girin. x_koordinati f(y) y_koordinati f(x)'e denk gelir. f ve g fonksiyonları için bunu yapabilirsiniz.
-Kalem, fareye tıklanırken her koordinatı değiştiğinde bir daire bırakır. Kalem ile şekiller çizilip yazılar yazılabilinir. Dört farklı renk eklendi.
-Silgi, fareye tıklanırken her kalem dairesinin üzerine geldiğinde onu görünmez yapar. Ekranın yakınlığı değiştirilebildiği, ekran taşınabildiği ve kalem çizgisinin daireleri bir dizi içinde olduğu için kalem dairesini silmez. Silmek diziyi ve diğer dairelerin özelliklerini bozar.
+
+Karmaşık bir denklem girmek için yorum olan kod parçasını yorumdan çıkartıp x ve y koordinatlarına denklemleri girin.
+x_koordinati f(y), y_koordinati f(x)'e denk gelir. g fonksiyonu için de bunu yapabilirsiniz.
+
+Kalem, fareye tıklanırken her koordinatı değiştiğinde bir daire bırakır. Kalem ile şekiller çizilip yazılar yazılabilinir.
+Dört farklı renk eklendi.
+
+Silgi, fareye tıklanırken her kalem dairesinin üzerine geldiğinde onu görünmez yapar. 
+Ekranın yakınlığı değiştirilebildiği, ekran taşınabildiği ve kalem çizgisinin daireleri bir dizi içinde olduğu için kalem dairesini silmez. Silmek diziyi ve diğer dairelerin özelliklerini bozar.
+
 Tümünü sil fonksiyonu tüm kalem dairelerini siler.
+
 Kaydetme çizilen cizgideki dairelerin tüm özelliklerini bir txt dosyası içine kaydeder ve açılışta program çizgiyi tekrar çizer.
-Ekran boyutunu değiştirirken program bilgisayarın ekran boyutunu alır ve pencereyi ona göre tekrar başlatır. Büyük ekran için ekran boyutuna göre açar, küçük ekran için ekran boyutunu bir oranla çarparak açar.
+
+Ekran boyutunu değiştirirken program bilgisayarın ekran boyutunu alır ve pencereyi ona göre tekrar başlatır.
+Büyük ekran için ekran boyutuna göre açar, küçük ekran için ekran boyutunu bir oranla çarparak açar.
+
 
 ![İki Grafik](https://github.com/kynemre/Cpp/blob/master/ikigrafik.png?raw=true)
 
