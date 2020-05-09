@@ -43,7 +43,7 @@ Visual Studio icin kütüphaneyi projeye ekleme,
 Grafik Çizimi projesinin kodlarını Visual Studio'ya entegre edin.
 Proje gezgini üzerinde projeye sağ tıklayın ve Properties seçin. Eğer projeniz bit'i ile  Properties'deki platforms bit'i farklı ise aynı değerde olacak şekilde düzenleyin. 
 
-![Bit ayarlari](https://github.com/kynemre/Cpp/blob/master/bit.png?raw=true)
+![BitAyari](https://user-images.githubusercontent.com/46110671/81459953-fd65da80-91aa-11ea-8e40-cb75b22a07ea.png)
 
 Açılan pencerede VC++ Directories bölümüne gidin. Bu bölümde Include Directories satırına edit diyerek düzenlemeyi açın. Sağ üstten yeni yol ekleye tıklayarak indirdiğiniz SFML kitaplığının include klasörünü yolunu ekleyin. Tamam'a tıklayın.
 
@@ -71,41 +71,16 @@ Programı çalıştırabilirsiniz.
 
 Windows versiyonudur.
 
-![Acilis ekrani](https://github.com/kynemre/Cpp/blob/master/Acilis.png?raw=true)
+![AcilisEkrani](https://user-images.githubusercontent.com/46110671/81459982-271f0180-91ab-11ea-8393-5b224e817d6d.png)
 
 Bilgisayardan ekran boyutlariniz alır ve küçülterek pencereyi açar.
 
 Denklem girebilmek için ve fonksiyonları seçebilmek için üst menü vardır.
 
-Hangi fonksiyonun denklemi girilecekse belirtilir(f(x), f(y), g(x), g(y)).
+Hangi fonksiyonun denklemi girilecekse belirtilir(f(x), f(y), g(x), g(y), r1, r2).
 
-Denklem yazilir ve enter tuşuna basılır. Program denklemi işlemeye çalışır fakat bu konuda fazla başarılı değildir.
+Denklem yazilir ve enter tuşuna basılır.
+*Denklem okuma kısmı henüz tamamlanmış değil.
 
-
-![Koda denklem girme](https://github.com/kynemre/Cpp/blob/master/koda_denklem_gir.png?raw=true)
-
-Karmaşık bir denklem girmek için yorum olan kod parçasını yorumdan çıkartıp x ve y koordinatlarına denklemleri girin.
-x_koordinati f(y), y_koordinati f(x)'e denk gelir. g fonksiyonu için de bunu yapabilirsiniz.
-
-Kalem, fareye tıklanırken her koordinatı değiştiğinde bir daire bırakır. Kalem ile şekiller çizilip yazılar yazılabilinir.
-Dört farklı renk eklendi.
-
-Silgi, fareye tıklanırken her kalem dairesinin üzerine geldiğinde onu görünmez yapar. 
-Ekranın yakınlığı değiştirilebildiği, ekran taşınabildiği ve kalem çizgisinin daireleri bir dizi içinde olduğu için kalem dairesini silmez. Silmek diziyi ve diğer dairelerin özelliklerini bozar.
-
-Tümünü sil fonksiyonu tüm kalem dairelerini siler.
-
-Kaydetme çizilen cizgideki dairelerin tüm özelliklerini bir txt dosyası içine kaydeder ve açılışta program çizgiyi tekrar çizer.
-
-Ekran boyutunu değiştirirken program bilgisayarın ekran boyutunu alır ve pencereyi ona göre tekrar başlatır.
-Büyük ekran için ekran boyutuna göre açar, küçük ekran için ekran boyutunu bir oranla çarparak açar.
-
-
-![İki Grafik](https://github.com/kynemre/Cpp/blob/master/ikigrafik.png?raw=true)
-
-Aynı anda f ve g olarak iki denklemin grafiğinini çizebilir.
+Aynı anda f, g, r1 ve r2 olarak dört denklemin grafiğinini aynı anda çizebilir.
 Üstel ve trigonometrik(sin, cos, tan, cot ,asin, acos, atan, acot) ifdade içeren denklemlerin grafiğini çizebilir.
-
-![Parametrik](https://github.com/kynemre/Cpp/blob/master/parametrik.png?raw=true)
-
-Parametrik denklemlerin grafiğini görmek isterseniz burada çizdirebilirsiniz.
