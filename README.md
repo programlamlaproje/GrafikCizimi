@@ -83,4 +83,5 @@ Denklem yazilir ve enter tuşuna basılır.
 *Denklem okuma kısmı henüz tamamlanmış değil.
 
 Aynı anda f, g, r1 ve r2 olarak dört denklemin grafiğinini aynı anda çizebilir.
-Üstel ve trigonometrik(sin, cos, tan, cot ,asin, acos, atan, acot) ifdade içeren denklemlerin grafiğini çizebilir.
+![Egriler](https://user-images.githubusercontent.com/46110671/81488219-b93c0e00-926e-11ea-860a-455e4e28614b.png)
+
